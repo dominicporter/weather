@@ -25,7 +25,7 @@ class App extends Component {
             data: []
         };
 
-        $.get( "http://api.openweathermap.org/data/2.5/forecast?q=edinburgh,uk&appid=14b4fdb35f2b5da649c374baf80d5196&units=metric", ( data ) => {
+        $.get( "/weather", ( data ) => {
             console.log(data);
             data.list.forEach((dayData)=>{this.addDay(new Date(dayData.dt*1000)+
                 dayData.weather[0].description)});

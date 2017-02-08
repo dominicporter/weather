@@ -8,10 +8,12 @@
   "dependencies": {
     "jquery": "^3.1.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "express": "^4.13.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "debug": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
