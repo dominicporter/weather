@@ -32,7 +32,7 @@ app.get('/weather',(req,res)=>{
         response.on('end', function () {
             res.json(JSON.parse(str));
         });
-    }
+    };
 
     http.request(options, callback).end();
 });

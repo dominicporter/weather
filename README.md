@@ -14,7 +14,7 @@ See the section about [deployment](#deployment) for more information.
 
 ### `npm start`
 
-Runs the app locally.<br>
+Runs the app locally.
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 ### `npm test`
@@ -33,3 +33,43 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 Be aware of the [difference between default and named exports](http://stackoverflow.com/questions/36795819/react-native-es-6-when-should-i-use-curly-braces-for-import/36796281#36796281). It is a common source of mistakes.
+
+
+## Docker
+
+### Building Container
+
+`docker build -t weatherapp .`
+
+`docker images`
+
+### Running Container
+
+Make sure you are set up do run docker on a local container
+`docker run -p 80:8080 -d weatherapp`
+
+`docker ps`
+
+To log directly into the container:
+
+`docker exec -it <CONTAINER_ID> sh` 
+
+### Deploying the Docker Container to Azure
+
+Create the machine in Azure (you only have to do this once):
+`docker-machine create --driver azure --azure-subscription-id <AZURE_SUBS_ID> weathermachine`
+
+`docker-machine ls`
+
+Set the ENV variables so that Docker uses the remote machine instead of local:
+`eval $(docker-machine env weathermachine)`
+
+Now repeat the `docker run` command to run it in the cloud instead of locally.
+
+### Going back to use local Docker (for Mac)
+
+`env | grep DOCKER`
+
+If there are any DOCKER values then:
+
+`unset ${!DOCKER_*}`
